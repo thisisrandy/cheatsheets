@@ -2,3 +2,11 @@
 
 # Use perf from linux-tools to gather statistics about a program
 perf stat <program>
+
+% hacker, hacking, matrix
+
+# Print random "movie hacker" text to the terminal
+perl -MTime::HiRes -e 'use Time::HiRes qw(usleep); $| = 1; print("\033[1;39m"); while(1) { foreach(0..rand(100)) { print(chr(rand(95)+32)); usleep(rand(3000)); } print("\n"); }'
+
+# Print random "Matrix digital rain" text to the terminal
+perl -MTime::HiRes -e 'use Time::HiRes qw(usleep); $| = 1; binmode(STDOUT, "encoding(UTF-8)"); print("\033[1;92m"); while(1) { foreach(0..rand(100)) { print(chr(rand() > 0.7 ? rand(95)+32 : rand(64)+65376)); usleep(rand(3000)); } print("\n"); }'
