@@ -1,7 +1,7 @@
 % time, timing, stats, statistics
 
 # Use perf from linux-tools to gather statistics about a program
-perf stat <program>
+perf stat 
 
 % hacker, hacking, matrix, just for fun
 
@@ -14,4 +14,4 @@ perl -MTime::HiRes -e 'use Time::HiRes qw(usleep); $| = 1; binmode(STDOUT, "enco
 % git
 
 # Unstage a file
-git restore –staged <file to unstage>
+git restore –staged 
