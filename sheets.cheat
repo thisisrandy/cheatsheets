@@ -3,6 +3,18 @@
 # Use perf from linux-tools to gather statistics about a program
 perf stat
 
+# Use perf to record call graphs for a shell call
+perf record -g sh -c '<program>'
+
+# View a perf report including call graphs
+perf report -g
+
+# View a perf report including call graphs and filtering on a symbol
+perf report -g --symbol-filter=<symbol>
+
+# Use sysbench to test sequential RAM reading
+sysbench memory --memory-block-size=1G --memory-oper=read --threads=1 run
+
 % hacker, hacking, matrix, just for fun
 
 # Print random "movie hacker" text to the terminal
