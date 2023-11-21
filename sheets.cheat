@@ -35,3 +35,11 @@ find -regextype egrep -regex
 
 # Prune a path from results
 find -path <path> -prune -false -o
+
+% journal, logs
+
+# View the log for the most recent boot
+journalctl -b
+
+# Use journalctl with case-insensitive paging
+SYSTEMD_LESS=-FRSXMKi journalctl
