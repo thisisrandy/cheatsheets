@@ -43,3 +43,8 @@ journalctl -b
 
 # Use journalctl with case-insensitive paging
 SYSTEMD_LESS=-FRSXMKi journalctl
+
+% temp files, tmp
+
+# Make a temporary directory and navigate into it
+cd $(mktemp -d)
