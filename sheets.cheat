@@ -48,3 +48,8 @@ SYSTEMD_LESS=-FRSXMKi journalctl
 
 # Make a temporary directory and navigate into it
 cd $(mktemp -d)
+
+% dns
+
+# Look up information about your external IP address
+dig +short myip.opendns.com @resolver1.opendns.com | xargs whois
