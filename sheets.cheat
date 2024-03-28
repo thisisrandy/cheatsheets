@@ -53,3 +53,8 @@ cd $(mktemp -d)
 
 # Look up information about your external IP address
 dig +short myip.opendns.com @resolver1.opendns.com | xargs whois
+
+% passwords
+
+# Generate a random password
+perl -e 'foreach(0..15+rand(10)) { print(chr(rand(95)+32)) } print("\n")'
