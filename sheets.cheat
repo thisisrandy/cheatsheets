@@ -58,3 +58,8 @@ dig +short myip.opendns.com @resolver1.opendns.com | xargs whois
 
 # Generate a random password and copy it to the clipboard
 perl -e 'foreach(0..15+rand(10)) { print(chr(rand(95)+32)) }' | xclip -selection clipboard
+
+% video munging
+
+# Delete various color-related properties from all HEVC mkv files. This is useful because Roku sticks use this information in a buggy way that results in dark, over-saturated video. Assumes track 1 is the video track
+find -type f -name "*mkv" | perl -ne 'chomp; `mkvpropedit "$_" -e track:1 -d color-range -d color-matrix-coefficients -d chroma-siting-horizontal -d chroma-siting-vertical -d color-transfer-characteristics -d color-primaries` if `mkvinfo "$_"` =~ "HEVC"'
