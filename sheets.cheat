@@ -62,7 +62,7 @@ perl -e 'foreach(0..15+rand(10)) { print(chr(rand(95)+32)) }' | xclip -selection
 % video munging
 
 # Delete various color-related properties from all HEVC mkv files. This is useful because Roku sticks use this information in a buggy way that results in dark, over-saturated video. Assumes only one video track
-find -type f -name "*mkv" | perl -ne 'chomp; `mkvpropedit "$_" -e track:v1 -d color-range -d color-matrix-coefficients -d chroma-siting-horizontal -d chroma-siting-vertical -d color-transfer-characteristics -d color-primaries` if `mkvinfo "$_"` =~ "HEVC"'
+find -type f -name "*mkv" | perl -ne 'chomp; print(`mkvpropedit "$_" -e track:v1 -d color-range -d color-matrix-coefficients -d chroma-siting-horizontal -d chroma-siting-vertical -d color-transfer-characteristics -d color-primaries`) if `mkvinfo "$_"` =~ "HEVC"'
 
 % navi
 
