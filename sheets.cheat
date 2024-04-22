@@ -64,6 +64,9 @@ perl -e 'foreach(0..15+rand(10)) { print(chr(rand(95)+32)) }' | xclip -selection
 # Delete various color-related properties from all HEVC mkv files. This is useful because Roku sticks use this information in a buggy way that results in dark, over-saturated video. Assumes only one video track
 find -type f -name "*mkv" | perl -ne 'chomp; print($_ . "\n" . `mkvpropedit "$_" -e track:v1 -d color-range -d color-matrix-coefficients -d chroma-siting-horizontal -d chroma-siting-vertical -d color-transfer-characteristics -d color-primaries`) if `mkvinfo "$_"` =~ "HEVC"'
 
+# Convert the audio track of all HEVC EAC3 to stereo AAC. Useful to circumvent Roku stick bug
+find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe = `ffprobe "$_" 2>&1`; if($ffprobe =~ "hevc" && $ffprobe =~ "eac3") { $ext = $1 if /\.(mkv|mp4)$/; `ffmpeg -i "$_" -codec copy -codec:a aac -b:a 160k -ac:a 2 t.$ext`; `mv t.$ext "$_"` }'
+
 % navi
 
 # Add/update repository
