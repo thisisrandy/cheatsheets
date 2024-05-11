@@ -70,6 +70,9 @@ find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe =
 # Extract mov_text from video files and convert to SubRip (srt) format. Useful to circumvent Roku stick bug
 find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; if(`ffprobe "$_" 2>&1` =~ "mov_text") { $fn = $1 if /^(.*)\.(:?mkv|mp4)$/; `ffmpeg -i "$_" -map s -codec:s srt "$fn.en.srt"` }'
 
+# Extract all subtitles and convert to SubRip (srt) format. Behavior unspecified if multiple subtitle tracks are contained
+find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; if(`ffprobe "$_" 2>&1` =~ "Subtitle") { $fn = $1 if /^(.*)\.(:?mkv|mp4)$/; `ffmpeg -i "$_" -map s -codec:s srt "$fn.en.srt"` }'
+
 # Roku fix suite. Series of commands to circumvent Roku stick bug
 find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe = `ffprobe "$_" 2>&1`; if($ffprobe =~ "hevc" && ($ffprobe =~ "(eac3|ac3)" || $ffprobe =~ "aac" && $ffprobe =~ "5.1")) { $ext = $1 if /\.(mkv|mp4)$/; `ffmpeg -i "$_" -codec copy -codec:a aac -b:a 160k -ac:a 2 t.$ext`; `mv t.$ext "$_"` }' && find -type f -name "*mkv" | perl -ne 'chomp; print($_ . "\n" . `mkvpropedit "$_" -e track:v1 -d color-range -d color-matrix-coefficients -d chroma-siting-horizontal -d chroma-siting-vertical -d color-transfer-characteristics -d color-primaries`) if `mkvinfo "$_"` =~ "HEVC"'
 
