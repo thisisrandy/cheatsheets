@@ -15,6 +15,17 @@ perf report -g --symbol-filter=<symbol>
 # Use sysbench to test sequential RAM reading
 sysbench memory --memory-block-size=1G --memory-oper=read --threads=1 run
 
+% network testing
+
+# Create an iperf3 server
+iperf3 -s
+
+# Run a download speed test to an iperf3 server
+iperf3 -c <server IP> -P 10
+
+# Run an upload speed test to an iperf3 server
+iperf3 -c <server IP> -P 10 -R
+
 % hacker, hacking, matrix, just for fun
 
 # Print random "movie hacker" text to the terminal
