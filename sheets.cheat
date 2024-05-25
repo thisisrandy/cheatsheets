@@ -91,7 +91,7 @@ find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe =
 find -type f -name "*.mkv" | perl -ne 'chomp; $fn = $1 if /(.*)\.mkv/; `ffmpeg -i "$_" -c copy "$fn.mp4" && rm "$_"`'
 
 # Extract a specific subtitles track. First use mkvinfo to inspect contents
-find -type f -name "*mkv" | perl -ne 'chomp; $fn = $1 if /^(.*)\.mkv$/; `mkvextract "$_" tracks <track_ID>:"$fn.<language_code>.srt"` }'
+find -type f -name "*mkv" | perl -ne 'chomp; $fn = $1 if /^(.*)\.mkv$/; `mkvextract "$_" tracks <track_ID>:"$fn.<language_code>.srt"`'
 
 % navi
 
