@@ -97,3 +97,8 @@ find -type f -name "*mkv" | perl -ne 'chomp; $fn = $1 if /^(.*)\.mkv$/; print(`m
 
 # Add/update repository
 navi repo add <repository>
+
+% shell
+
+# Print all of the key/value pairs in a zsh associative array
+for key val in "${(@kv)<variable>}"; do echo "$key -> $val"; done
