@@ -105,3 +105,8 @@ navi repo add <repository>
 
 # Print all of the key/value pairs in a zsh associative array
 for key val in "${(@kv)<variable>}"; do echo "$key -> $val"; done
+
+% torrenting
+
+# Clean up trash files
+find -type f -regextype egrep -regex ".*(jpg|txt|nfo|sfv|exe)" -exec rm {} \;
