@@ -94,7 +94,7 @@ find -type f -name "*.mkv" | perl -ne 'chomp; $fn = $1 if /(.*)\.mkv/; `ffmpeg -
 find -type f -name "*mkv" | perl -ne 'chomp; $fn = $1 if /^(.*)\.mkv$/; print(`mkvextract "$_" tracks <track_ID>:"$fn.<language_code>.srt"`)'
 
 # Simultaneously convert the audio track of all HEVC/5.1 audio to stereo AAC and repackage (if applicable) in mp4 format
-find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe = `ffprobe "$_" 2>&1`; if($ffprobe =~ "hevc" && $ffprobe =~ "5.1") { $name = $1 if /^(.*)\.(mkv|mp4)$/; `ffmpeg -i "$_" -codec copy -codec:a aac -b:a 160k -ac:a 2 "$name.mp4"`; `rm "$_"` }'
+find -type f -regextype egrep -regex ".*(mkv|mp4)" | perl -ne 'chomp; $ffprobe = `ffprobe "$_" 2>&1`; if($ffprobe =~ "hevc" && $ffprobe =~ "5.1") { $name = $1 if /^(.*)\.(mkv|mp4)$/; `ffmpeg -i "$_" -codec copy -codec:a aac -b:a 160k -ac:a 2 t.mp4 && rm "$_" && mv t.mp4 "$name.mp4"` }'
 
 % navi
 
