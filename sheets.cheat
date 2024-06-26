@@ -110,3 +110,6 @@ for key val in "${(@kv)<variable>}"; do echo "$key -> $val"; done
 
 # Clean up trash files
 find -type f -regextype egrep -regex ".*(jpg|txt|nfo|sfv|exe)" -exec rm {} \;
+
+# Clean up directory names
+find -maxdepth 1 ! -path . -type d | perl -ne 'chomp; $o = $_; exit unless /www\.Torrenting\.com/; s/www\.Torrenting\.com\s*-\s*//; `mv "$o" "$_"`'
