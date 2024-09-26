@@ -127,3 +127,8 @@ find -regextype egrep \( -path ./.venv -o -path ./.git -o -path ./node_modules \
 # Find files larger than the specified size (any valid sh expression) and print in tabular format
 find -type f | perl -nE 'BEGIN{ say "Size\tPath" } chomp; say (-s . "\t$_") if -s > '$((<min_size>)) | column -ts $'\t'
 $ min_size: echo $((1024**3*2)) --- --fzf-overrides '--no-select-1'
+
+% utils
+
+# Set a notification timer. <time> is e.g. +7 min
+echo 'notify-send "<message>"' | at now <time>
