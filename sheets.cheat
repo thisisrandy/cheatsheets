@@ -121,3 +121,9 @@ find \( -path ./.venv -o -path ./.git -o -path ./node_modules \) -prune -false -
 
 # Run wc over files with any of the specified extensions (separate with |)
 find -regextype egrep \( -path ./.venv -o -path ./.git -o -path ./node_modules \) -prune -false -o -type f -regex ".*\.(<extension_expr>)"| xargs wc
+
+% generic find cmds
+
+# Find files larger than the specified size (any valid sh expression) and print in tabular format
+find -type f | perl -nE 'BEGIN{ say "Size\tPath" } chomp; say (-s . "\t$_") if -s > '$((<min_size>)) | column -ts $'\t'
+$ min_size: echo $((1024**3*2)) --- --fzf-overrides '--no-select-1'
