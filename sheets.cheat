@@ -117,7 +117,7 @@ for key val in "${(@kv)<variable>}"; do echo "$key -> $val"; done
 find -type f -regextype egrep -regex ".*(jpg|txt|nfo|sfv|exe)" -exec rm {} \;
 
 # Clean up directory names
-find -maxdepth 1 ! -path . -type d | perl -ne 'chomp; $o = $_; `mv "$o" "$_"` if s/www\.(Torrenting|SceneTime)\.com\s*-\s*//'
+find -maxdepth 1 ! -path . -type d | perl -ne 'chomp; $o = $_; `mv "$o" "$_"` if s/www\.(Torrenting|SceneTime|UIndex)\.(com|org)\s*-\s*//'
 
 % code stats
 
