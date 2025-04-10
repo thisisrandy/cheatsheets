@@ -111,6 +111,9 @@ navi repo add <repository>
 # Print all of the key/value pairs in a zsh associative array
 for key val in "${(@kv)<variable>}"; do echo "$key -> $val"; done
 
+# Repeat a command n times. 1-based rep num in $i
+for i in {1..<num_times>}; do <command>; done
+
 % torrenting
 
 # Clean up trash files
