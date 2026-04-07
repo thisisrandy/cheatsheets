@@ -39,6 +39,9 @@ perl -MTime::HiRes -e 'use Time::HiRes qw(usleep); $| = 1; binmode(STDOUT, "enco
 # Unstage (a) file(s)
 git restore --staged <files>
 
+# Find all modified repositories under cwd
+find -name ".git" -type d -prune -exec sh -c 'cd $(dirname "{}") && [ -n "$(git status --porcelain)" ] && echo "Modified: $PWD"' \;
+
 % find, regex
 
 # Use extended regular expressions
