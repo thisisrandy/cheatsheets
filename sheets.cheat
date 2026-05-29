@@ -15,6 +15,9 @@ perf report -g --symbol-filter=<symbol>
 # Use sysbench to test sequential RAM reading
 sysbench memory --memory-block-size=1G --memory-oper=read --threads=1 run
 
+# Convert linux time to local
+date -d @<linux_time>
+
 % network testing
 
 # Create an iperf3 server
