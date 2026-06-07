@@ -146,3 +146,8 @@ $ min_size: echo $((1024**3*2)) --- --fzf-overrides '--no-select-1'
 
 # Set a notification timer. <time> is e.g. +7 min
 echo 'notify-send "<message>"' | at now <time>
+
+% Nvidia
+
+# Check the current nvidia driver version
+modinfo nvidia | grep version
