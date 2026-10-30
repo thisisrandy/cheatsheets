@@ -126,7 +126,7 @@ for i in {1..<num_times>}; do <command>; done
 find -type f -regextype egrep -regex ".*(png|jpg|txt|nfo|sfv|exe)" -exec rm {} \;
 
 # Clean up directory names
-find -maxdepth 1 ! -path . -type d | perl -ne 'chomp; $o = $_; `mv "$o" "$_"` if s/www\.(Torrenting|SceneTime|UIndex)\.(com|org)\s*-\s*//'
+find -maxdepth 1 ! -path . -type d | perl -ne 'chomp; $o = $_; `mv "$o" "$_"` if s/(\[\s*)?www\.(Torrenting|SceneTime|UIndex)\.(com|org)\s*(\]\s*)?-\s*//'
 
 % code stats
 
