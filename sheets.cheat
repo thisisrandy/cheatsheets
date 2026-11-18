@@ -151,3 +151,9 @@ echo 'notify-send "<message>"' | at now <time>
 
 # Check the current nvidia driver version
 modinfo nvidia | grep version
+
+% Markdown
+
+# Convert a markdown (.md) file to pdf
+pandoc --pdf-engine=weasyprint <markdownfile> -o <outputfile>
+
